@@ -6,20 +6,28 @@ const App2 = () => {
   const [box, setbox] = React.useState(data);
   function ontoggle(id) {
     setbox((prev) => {
-      const newBox = [];
-      for (let i = 0; i < prev.length; i++) {
-        const currentbox = prev[i];
-        if (currentbox.id === id) {
-          const update = {
-            ...prev,
-            on: !prev.on,
-          };
-          newBox.push(update);
-        } else {
-          newBox.push(currentbox);
-        }
-      }
-      return newBox;
+      return prev.map((square) => {
+        return square.id === id
+          ? {
+              ...square,
+              on: !square.on,
+            }
+          : square;
+      });
+      //   const newSquares = [];
+      //   for (let i = 0; i < prev.length; i++) {
+      //     const currentbox = prev[i];
+      //     if (currentbox.id === id) {
+      //       const update = {
+      //         ...currentbox,
+      //         on: !currentbox.on,
+      //       };
+      //       newSquares.push(update);
+      //     } else {
+      //       newSquares.push(currentbox);
+      //     }
+      //   }
+      //   return newSquares;
     });
 
     //   logic not work
